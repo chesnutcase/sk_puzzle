@@ -53,7 +53,7 @@ var puzzleId = {{$puzzle->id}};
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-      <h1 class="display-4">{{$puzzle->shortDescription}}</h1>
+      <h1 class="display-3" style="font-family:'Lido STF Bold Italic';color:#EE0000">{{$puzzle->shortDescription}}</h1>
       <div>{!!$puzzle->description!!}</div>
     </div>
     <div class="col-md-6">

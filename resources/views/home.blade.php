@@ -244,7 +244,7 @@ td {
     <img src="/img/clear_maki.jpg" id="clearMaki">
   </div>
   <div class="row align-items-center justify-content-center">
-    <h1 id="puzzleName">Puzzle name</h1>
+    <h1 id="puzzleName" style="font-family:'Lido STF Bold Italic';color:#EE0000">Puzzle name</h1>
   </div>
   <div class="row align-items-center justify-content-center">
     <h3 id="puzzleStatus">To be completed</h3>
