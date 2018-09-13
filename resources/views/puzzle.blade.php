@@ -34,6 +34,7 @@
       margin-left:25%;
       margin-right:25%;
       margin-top:15%;
+      display:none;
     }
     #stageClearText{
       position:relative;
@@ -64,7 +65,7 @@ var puzzleId = {{$puzzle->id}};
 using namespace std;
 
 int main(){
-    
+
     return 0;
 }
 EOT;
