@@ -16,7 +16,7 @@ class CreateAttemptsTable extends Migration
             $table->text('code');
             $table->text('outfile')->nullable();
             $table->unsignedInteger('puzzle_id');
-            $table->foreign('puzzle_id')->references('id')->on('puzzles')->nullable();
+            $table->foreign('puzzle_id')->references('id')->on('puzzles')->nullable()->onDelete('cascade');
             $table->timestamps();
         });
     }

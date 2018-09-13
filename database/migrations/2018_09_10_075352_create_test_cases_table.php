@@ -16,7 +16,7 @@ class CreateTestCasesTable extends Migration
             $table->text('input')->nullable();
             $table->text('output');
             $table->unsignedInteger('puzzle_id');
-            $table->foreign('puzzle_id')->references('id')->on('puzzles');
+            $table->foreign('puzzle_id')->references('id')->on('puzzles')->onDelete('cascade');
             $table->timestamps();
         });
 

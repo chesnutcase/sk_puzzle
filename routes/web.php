@@ -18,8 +18,17 @@ Route::get('/', function () {
 
 Route::post('/login', function (Request $request) {
     if (password_verify($request->input('password'), App\Secret::where(['key' => 'sk_key'])->first()->value)) {
-        $loginCookie = str_random(15);
         $request->session()->put('loggedInAs', 'SK');
+
+        return response('');
+    } else {
+        return response('', 403);
+    }
+});
+
+Route::post('/adminLogin', function (Request $request) {
+    if (password_verify($request->input('password'), App\Secret::where(['key' => 'admin_key'])->first()->value)) {
+        $request->session()->put('loggedInAs', 'admin');
 
         return response('');
     } else {
@@ -84,5 +93,53 @@ Route::prefix('game')->middleware('game')->group(function () {
 
             return json_encode($attempt->results);
         });
+    });
+});
+
+Route::prefix('admin')->middleware('admin')->group(function () {
+    Route::get('/', function () {
+        return view('adminHome');
+    });
+    Route::get('/puzzle/{id}', function (Request $request, $id) {
+        $puzzle = \App\Puzzle::find($id);
+        $mapPiece = \App\MapPiece::find($id);
+
+        return view('puzzleEdit', ['puzzle' => $puzzle, 'mapPiece' => $mapPiece]);
+    });
+    Route::post('puzzle', function (Request $request) {
+        $validatedData = $request->validate([
+          'puzzleName' => 'required',
+          'puzzleId' => 'required|numeric',
+          'puzzleDescription' => 'required',
+          'testCases' => 'required|JSON',
+          'puzzleTimeLimit' => 'required|numeric',
+      ]);
+        nani();
+        $puzzle = \App\Puzzle::find($request->input('puzzleId'));
+        $mapPiece = \App\MapPiece::find($request->input('puzzleId'));
+        $mapPiece->imagePath = $request->file('image')->store('maps');
+        $puzzle->shortDescription = $request->input('puzzleName');
+        $puzzle->description = $request->input('puzzleDescription');
+        $puzzle->timeLimit = $request->input('puzzleTimeLimit');
+        $backupTestCases = $puzzle->testCases()->get();
+        $puzzle->attempts()->delete();
+        $puzzle->testCases()->delete();
+        $inputTestCases = json_decode($request->input('testCases'));
+        try {
+            foreach ($inputTestCases as $inputTestCase) {
+                $puzzle->testCases()->create([
+              'input' => $inputTestCase->input,
+              'output' => $inputTestCase->output,
+              ])->save();
+            }
+        } catch (\Exception $ex) {
+            foreach ($backupTestCases as $backupTestCase) {
+                $backupTestCase->save();
+            }
+        }
+        $puzzle->save();
+        $mapPiece->save();
+
+        return redirect('/admin/puzzle/'.$puzzle->id)->with(['message' => 'saved']);
     });
 });
