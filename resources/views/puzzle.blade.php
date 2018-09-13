@@ -57,7 +57,18 @@ var puzzleId = {{$puzzle->id}};
       <div>{!!$puzzle->description!!}</div>
     </div>
     <div class="col-md-6">
-        <div id="editor">{{$puzzle->attempts()->count() > 0 ? $puzzle->attempts()->orderBy("created_at","desc")->first()->code : ''}}</div>
+        <?php
+        $defaultCode = <<<'EOT'
+#include <iostream>
+
+using namespace std;
+
+int main(){
+  return 0;
+}
+EOT;
+        ?>
+        <div id="editor">{{$puzzle->attempts()->count() > 0 ? $puzzle->attempts()->orderBy("created_at","desc")->first()->code : $defaultCode}}</div>
         <button type="button" class="btn btn-primary" id="runButton">Run</button>
     </div>
   </div>
