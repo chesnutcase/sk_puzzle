@@ -10,16 +10,16 @@
         src: url('/font/LidoSTFBoldItalic.otf');
     }
     #editor {
-        position: absolute;
-        top: 0;
+        position: sticky;
+        top: 0vh;
         right: 0;
         bottom: 0;
         left: 0;
-        height:50vh;
+        height:85vh;
     }
     #runButton{
-      position:absolute;
-      top:50vh;
+      position:sticky;
+      top:85vh;
       left:0;
       z-index:9001;
     }
