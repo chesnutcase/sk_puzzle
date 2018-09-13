@@ -18,7 +18,7 @@ td{
 @foreach(\App\MapPiece::all()->chunk(3) as $row)
   <tr>
     @foreach($row as $column)
-    <td><img src="{{$column->imagePath}}"></td>
+    <td><a href="/admin/puzzle/{{$column->id}}"><img src="{{$column->imagePath}}"></a></td>
     @endforeach
   </tr>
 @endforeach
