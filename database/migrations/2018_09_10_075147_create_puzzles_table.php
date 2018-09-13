@@ -85,20 +85,22 @@ EOT
           'description' => <<<EOT
 Given a list of space separated numbers, return the number of unique numbers. <br>
 <h3>Input</h3>
-First passed an integer <var>n</var>, followed by a list of <var>n</var> integers ranging from <var>0</var> to <var>10000</var>.
+The first line contains three integers, the number of integers in the list <code>n</code>, the minimum possible number in the list <code>a</code> and the maximum possible number <code>b</code>.
 <h3>Output</h3>
 A number representing how many unique integers were present in the input list.
 <h3>Examples</h3>
 <h4>Input 1</h4>
-<pre>10
+<pre>10 1 10
 6 6 3 10 8 7 6 10 4 8</pre>
 <h4>Output 1</h4>
 <pre>6</pre>
 <h4>Input 2</h4>
-<pre>12
+<pre>12 1 10
 1 4 9 6 3 9 1 7 9 4 1 5</pre>
 <h4>Output 2</h4>
 <pre>7</pre>
+<h3>Hint</h3>
+The last test case contains large <code>n</code> >> <code>(b-a)</code>. (Assumed to be at least 10 times larger). What happens then?
 EOT
         ,
           'timeLimit' => 2,
