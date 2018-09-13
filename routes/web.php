@@ -114,7 +114,6 @@ Route::prefix('admin')->middleware('admin')->group(function () {
           'testCases' => 'required|JSON',
           'puzzleTimeLimit' => 'required|numeric',
       ]);
-        nani();
         $puzzle = \App\Puzzle::find($request->input('puzzleId'));
         $mapPiece = \App\MapPiece::find($request->input('puzzleId'));
         $mapPiece->imagePath = $request->file('image')->store('maps');
