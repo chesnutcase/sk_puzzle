@@ -36,7 +36,23 @@ EOT
         DB::table('puzzles')->insert([
           'id' => 2,
           'shortDescription' => 'Multiply by two',
-          'description' => 'Given any input, multiply the input by two and write to standard output.',
+          'description' => <<<'EOT'
+Given any input, multiply the input by two and write to standard output.
+<h3>Input</h3>
+Integer <code>x</code> where 0 ≤ <code>x</code> ≤ 2<sup>32</sup> - 1.
+<h3>Output</h3>
+The input multiplied by 2.
+<h3>Examples</h3>
+<h4>Input 1</h4>
+<pre>0</pre>
+<h4>Output 1</h4>
+<pre>0</pre>
+<h4>Input 2</h4>
+<pre>1</pre>
+<h4>Output 2</h4>
+<pre>2</pre>
+EOT
+          ,
           'timeLimit' => 1,
         ]);
 
