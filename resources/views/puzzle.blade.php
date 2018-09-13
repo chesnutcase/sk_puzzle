@@ -2,7 +2,13 @@
 
 @section("head")
 <script src="/js/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<link rel="preload" as="font" href="/font/LidoSTFBoldItalic.otf">
+<link rel="stylesheet" href="/css/stageClearAnimation.css">
 <style type="text/css" media="screen">
+    @font-face {
+        font-family: 'Lido STF Bold Italic';
+        src: url('/font/LidoSTFBoldItalic.otf');
+    }
     #editor {
         position: absolute;
         top: 0;
@@ -20,6 +26,22 @@
     #attemptsTableDiv{
       max-height:50vh;
       overflow-y: scroll;
+    }
+    #clearMaki{
+      border-radius:50%;
+      width:50%;
+      height:auto;
+      margin-left:25%;
+      margin-right:25%;
+      margin-top:15%;
+    }
+    #stageClearText{
+      position:relative;
+      text-align:center;
+      margin-top:5%;
+      font-family:'Lido STF Bold Italic';
+      color:#EE0000;
+      transform: translate(-150px, -50px) rotate(-180deg) scale(3);
     }
 </style>
 <script>
@@ -72,6 +94,20 @@ var puzzleId = {{$puzzle->id}};
     </div>
   </div>
 </div>
+<div class="modal fade" id="stageClearModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body" style="height:60vh">
+        <img src="/img/clear_maki.jpg" id="clearMaki"/>
+        <h1 class="display-3" id="stageClearText"><span>S</span><span>t</span><span>a</span><span>g</span><span>e</span><span> </span><span>C</span><span>l</span><span>e</span><span>a</span><span>r</span><span>!</span>
+        </h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="window.location='/game'">Return to puzzles home</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
 $(document).ready(function(){
   $(".container-fluid").addClass("animated fadeInUp");
@@ -119,6 +155,18 @@ $(document).ready(function(){
                   var newClass = "class='table-danger'";
                 }
                 $(newRow).after("<tr "+newClass+"><td>" + responseObj2[i].verdict + "</td></tr>");
+              }
+              var cleared = true;
+              //set default true and try to prove it false
+              for(var i=0;i<responseObj2.length;i++){
+                if(responseObj2[i].verdict != "OK"){
+                  cleared = false;
+                }
+              }
+              if(cleared){
+                $("#stageClearModal").modal();
+                $("#stageClearText").removeClass("clearAnimation");
+                $("#stageClearText").addClass("clearAnimation");
               }
               $("#attemptsTable > tr:last-child").get(0).scrollIntoView();
             }
