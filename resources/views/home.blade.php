@@ -51,7 +51,7 @@ td {
   }
   #puzzleDetails{
     position:absolute;
-    top:10vh;
+    top:8vh;
     margin-left:0px;
     padding-top:15vh;
     background-color:#f5f5f5;
@@ -229,6 +229,15 @@ td {
       </table>
     </div>
   </div>
+  <div class="row align-items-center justify-content-center">
+    <div class="col-auto" style="text-align:center;font-size:auto;max-width:100%">
+      <span>
+      Click on map pieces to open puzzles. <br>
+      Solving each puzzle reveals a map piece. <br>
+      Find sushikun by solving all puzzles and finding all map pieces.
+      </span>
+    </div>
+  </div>
 </div>
 <div class="container-fluid" id="puzzleDetails">
   <div class="row align-items-center justify-content-center">
@@ -311,11 +320,21 @@ $(document).ready(function(){
           if(responseObj.solved == true){
             $("#puzzleStatus").html("Complete!");
             $("#clearMaki").css("display","block");
-            $("#puzzleDetails").css("padding-top","15vh");
+            if(window.screen.width > window.screen.height){
+              //probably mobile
+              $("#puzzleDetails").css("padding-top","15vh");
+            }else{
+              $("#puzzleDetails").css("padding-top","0");
+            }
           }else{
             $("#puzzleStatus").html("To be completed");
             $("#clearMaki").css("display","none");
-            $("#puzzleDetails").css("padding-top","30vh");
+            if(window.screen.width > window.screen.height){
+              //probably mobile
+              $("#puzzleDetails").css("padding-top","30vh");
+            }else{
+              $("#puzzleDetails").css("padding-top","0");
+            }
           }
           $("#puzzleOpenBtn").attr("data-puzzleId",responseObj.id);
         }
