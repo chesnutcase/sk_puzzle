@@ -43,7 +43,8 @@ class CreatePuzzlesTable extends Migration
         DB::table('puzzles')->insert([
           'id' => 4,
           'shortDescription' => 'Unique Numbers',
-          'description' => 'Given a list of space separated numbers, return the number of unique numbers. <br>
+          'description' => <<<EOT
+Given a list of space separated numbers, return the number of unique numbers. <br>
 <h3>Input</h3>
 First passed an integer <var>n</var>, followed by a list of <var>n</var> integers ranging from <var>0</var> to <var>10000</var>.
 <h3>Output</h3>
@@ -58,7 +59,9 @@ A number representing how many unique integers were present in the input list.
 <pre>12
 1 4 9 6 3 9 1 7 9 4 1 5</pre>
 <h4>Output 2</h4>
-<pre>7</pre>',
+<pre>7</pre>
+EOT
+        ,
           'timeLimit' => 2,
         ]);
 
@@ -78,11 +81,212 @@ A number representing how many unique integers were present in the input list.
 
         DB::table('puzzles')->insert([
           'id' => 7,
-          'shortDescription' => 'NICO NICO NII',
-          'description' => "<img src='https://i.kym-cdn.com/photos/images/newsfeed/001/154/184/151'>
-You nico nico need to add more nico to µ's music!
-Given an entire lyrics of a µ's song, replace all instances of the syllable 'ni' with 'NICO NICO NII'.
-However, with each 'NICO NICO NII' you add, you must lengthen the nico nico nii's with an additional 'I'.",
+          'shortDescription' => 'Nico Nico Nii',
+          'description' => <<<EOT
+<p><img src='https://i.kym-cdn.com/photos/images/newsfeed/001/154/184/151'></p>
+<p>You nico nico need to add more nico to µ's music!</p>
+<p>Given the lyrics of a µ's song, replace all instances of the syllable <code>'ni'</code> with <code>'NICO NICO NII'</code>.
+However, with each <code>'NICO NICO NII'</code> you add, you must lengthen subsequent nico nico nii's with an additional <code>'I'</code>.</p>
+<h3>Input</h3>
+The first line represents how many lines the lyrics have. Then, line by line, the lyrics will be passed, containing whitespace. You must use <code>getline</code> and <b>not</b> <code>cin</code> to read the end of the input to entirety. There will be no empty lines in the input. The lyrics are stripped of non-alphabetic characters other than whitespaces.
+<h3>Output</h3>
+The manipulated lyrics of the song. Each instance of <code>'ni'</code> must be replaced with <code>'NICO NICO NII'</code>, but each instance with an additional <code>'I'</code>.
+<h3>Examples</h3>
+<h4>Input 1</h4>
+Not a µ's song, but for reference:
+<pre>
+1
+nihao Nihao nihao
+</pre>
+<h4>Output 1</h4>
+<pre>NICO NICO NIIhao Nihao NICO NICO NIIIhao</pre>
+Note that the match is case-sensitive.
+<h4>Input 2</h4>
+Song: Aishiteru Banzai
+<pre>
+33
+Aishiteru banzai
+Koko de yokatta watashitachi no ima ga koko ni aru
+Aishiteru banzai
+Hajimatta bakari ashita mo yoroshiku ne mada gooru janai
+Waratte yo kanashii nara fuki to basou yo
+Waraetara kawaru keshiki harema ga nozoku
+Fuan demo shiawase e to tsunagaru michi ga
+Miete kita yo na aozora
+Tokidoki ame ga furu kedo mizu ga nakucha taihen
+Kawaicha dame da yo minna no yume no ki yo sodate
+Saa
+Daisuki da banzai
+Makenai yuuki watashitachi wa ima o tanoshimou
+Daisuki da banzai
+Ganbareru kara kinou ni te o futte hora mae muite
+Susunde yo kurushikute mo tonari ni ite yo
+Susundara moeru taiyou higashi o terasu
+Mayotteta kotae ga nai saki e no michi wa
+Daremo shiranai ienai
+Totsuzen arashi no naka e ochiru gin no hikari
+Obiecha dame da yo minna no yume no ki wa tsuyoi
+Saa
+Aishiteru banzai
+Koko de yokatta watashitachi no ima ga koko ni aru
+Aishiteru banzai
+Hajimatta bakari ashita mo yoroshiku ne mada gooru janai
+Tokidoki ame ga furun da kaze de miki ga yureru
+Issho ni ikun da minna no yume no ki yo sodate
+Saa
+Daisuki da banzai
+Makenai yuuki watashitachi wa ima o tanoshimou
+Daisuki da banzai
+Ganbareru kara kinou ni te o futte hora mae muite
+</pre>
+<h4>Output 2</h4>
+<pre>
+Aishiteru banzai
+Koko de yokatta watashitachi no ima ga koko NICO NICO NII aru
+Aishiteru banzai
+Hajimatta bakari ashita mo yoroshiku ne mada gooru janai
+Waratte yo kanashii nara fuki to basou yo
+Waraetara kawaru keshiki harema ga nozoku
+Fuan demo shiawase e to tsunagaru michi ga
+Miete kita yo na aozora
+Tokidoki ame ga furu kedo mizu ga nakucha taihen
+Kawaicha dame da yo minna no yume no ki yo sodate
+Saa
+Daisuki da banzai
+Makenai yuuki watashitachi wa ima o tanoshimou
+Daisuki da banzai
+Ganbareru kara kinou NICO NICO NIII te o futte hora mae muite
+Susunde yo kurushikute mo tonari NICO NICO NIIII ite yo
+Susundara moeru taiyou higashi o terasu
+Mayotteta kotae ga nai saki e no michi wa
+Daremo shiranai ienai
+Totsuzen arashi no naka e ochiru gin no hikari
+Obiecha dame da yo minna no yume no ki wa tsuyoi
+Saa
+Aishiteru banzai
+Koko de yokatta watashitachi no ima ga koko NICO NICO NIIIII aru
+Aishiteru banzai
+Hajimatta bakari ashita mo yoroshiku ne mada gooru janai
+Tokidoki ame ga furun da kaze de miki ga yureru
+Issho NICO NICO NIIIIII ikun da minna no yume no ki yo sodate
+Saa
+Daisuki da banzai
+Makenai yuuki watashitachi wa ima o tanoshimou
+Daisuki da banzai
+Ganbareru kara kinou NICO NICO NIIIIIII te o futte hora mae muite
+</pre>
+<h4>Input 3</h4>
+Song: Niko Puri ~ Joshidou
+<pre>
+51
+Niko puri niko niko niko puri YEAH niko niko
+Niko puri niko niko niko puri YEAH PuritiGIRL
+Kimegao kibishiku tsuikyuu
+Arittake no jounetsu o sasagete
+Tadoritsuita raburii
+Kansei sareta hohoemi
+Nikoniko un Zettai makenai
+Chiya hoya saretai dake ja
+Kokoro zashi hiku sugiru ne hantaai
+Todo no tsumari raburii
+Kanpekina uinku miserun
+Nikoniko un Saikou
+Shiawase o todokemasho kono shunkan o
+Niko niko no mirakuru
+Kimari sugi YEAH YEAH
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Ookiku maware niko niko todoke
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Itasa mo honki warui ka honki sa
+Sore ga niko no joshidou
+Uru me de nagashime goukaku
+Tobikkiri no aijou ageru wa
+Koboresou na kyuutii
+Mamoritaku naru hazu deshu
+Nikoniko hai Touzen makenai
+Dogi magi sasechau gomen
+Miryokuteki sonna yadana shitteruu
+Tomedonakute kyuutii
+Ubaitaku naru kuchibiru
+Nikoniko hai Kinshi
+Shiawase o tsukamanakya sou jiriki de
+Niko niko wa buki yo
+Uwamuite YEAH YEAH
+Pyon pyoko pyon pyon Chiicchai
+Dakishimete mite yo pyon pyoko
+Ooki na yume mo niko niko kanau
+Pyon pyoko pyon pyon Chiicchai
+Dakishimete mite yo pyon pyoko
+Samukute joutou samuiko wa tsuyoi
+Korezo niko no joshidou
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Ookiku maware niko niko todoke
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Itasa mo honki warui ka honki sa
+Sore ga niko no joshidou
+Niko puri niko niko niko puri YEAH niko niko
+Niko puri niko niko niko puri YEAH PuritiGIRL
+</pre>
+<h4>Output 3</h4>
+<pre>
+Niko puri NICO NICO NIIko NICO NICO NIIIko NICO NICO NIIIIko puri YEAH NICO NICO NIIIIIko NICO NICO NIIIIIIko
+Niko puri NICO NICO NIIIIIIIko NICO NICO NIIIIIIIIko NICO NICO NIIIIIIIIIko puri YEAH PuritiGIRL
+Kimegao kibishiku tsuikyuu
+Arittake no jounetsu o sasagete
+Tadoritsuita raburii
+Kansei sareta hohoemi
+NikoNICO NICO NIIIIIIIIIIko un Zettai makenai
+Chiya hoya saretai dake ja
+Kokoro zashi hiku sugiru ne hantaai
+Todo no tsumari raburii
+Kanpekina uinku miserun
+NikoNICO NICO NIIIIIIIIIIIko un Saikou
+Shiawase o todokemasho kono shunkan o
+Niko NICO NICO NIIIIIIIIIIIIko no mirakuru
+Kimari sugi YEAH YEAH
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Ookiku maware NICO NICO NIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIko todoke
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Itasa mo honki warui ka honki sa
+Sore ga NICO NICO NIIIIIIIIIIIIIIIko no joshidou
+Uru me de nagashime goukaku
+Tobikkiri no aijou ageru wa
+Koboresou na kyuutii
+Mamoritaku naru hazu deshu
+NikoNICO NICO NIIIIIIIIIIIIIIIIko hai Touzen makenai
+Dogi magi sasechau gomen
+Miryokuteki sonna yadana shitteruu
+Tomedonakute kyuutii
+Ubaitaku naru kuchibiru
+NikoNICO NICO NIIIIIIIIIIIIIIIIIko hai Kinshi
+Shiawase o tsukamanakya sou jiriki de
+Niko NICO NICO NIIIIIIIIIIIIIIIIIIko wa buki yo
+Uwamuite YEAH YEAH
+Pyon pyoko pyon pyon Chiicchai
+Dakishimete mite yo pyon pyoko
+Ooki na yume mo NICO NICO NIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIko kanau
+Pyon pyoko pyon pyon Chiicchai
+Dakishimete mite yo pyon pyoko
+Samukute joutou samuiko wa tsuyoi
+Korezo NICO NICO NIIIIIIIIIIIIIIIIIIIIIko no joshidou
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Ookiku maware NICO NICO NIIIIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIko todoke
+Pyon pyoko pyon pyon Kaawaii
+Kaminoke ga hanete pyon pyoko
+Itasa mo honki warui ka honki sa
+Sore ga NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIko no joshidou
+Niko puri NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIIko puri YEAH NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIIIIko
+Niko puri NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIko NICO NICO NIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIko puri YEAH PuritiGIRL
+</pre>
+EOT
+        ,
           'timeLimit' => 1,
         ]);
 
