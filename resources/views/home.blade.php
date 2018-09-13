@@ -234,7 +234,7 @@ td {
       <span>
       Click on map pieces to open puzzles. <br>
       Solving each puzzle reveals a map piece. <br>
-      Find sushikun by solving all puzzles and finding all map pieces.
+      Find sushikun by solving all puzzles and revealing all map pieces.
       </span>
     </div>
   </div>
