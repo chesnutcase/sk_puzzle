@@ -1,6 +1,10 @@
 @extends("layouts/app")
 
 @section("head")
+<!-- Preload map images !-->
+@foreach(App\MapPiece::all() as $mapPiece)
+<link rel="preload" as="image" href='{{$mapPiece->imagePath}}'>
+@endforeach
 <style>
 td img{
   max-width:20vmin;
