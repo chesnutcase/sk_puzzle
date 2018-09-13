@@ -29,7 +29,7 @@ class CreatePuzzlesTable extends Migration
         DB::table('puzzles')->insert([
           'id' => 2,
           'shortDescription' => 'Multiply by two',
-          'description' => 'Given any input, output the input by two.',
+          'description' => 'Given any input, multiply the input by two and write to standard output.',
           'timeLimit' => 1,
         ]);
 
