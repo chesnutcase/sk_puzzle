@@ -53,7 +53,7 @@ td {
     position:absolute;
     top:10vh;
     margin-left:0px;
-    padding-top:30vh;
+    padding-top:15vh;
     background-color:#f5f5f5;
     width:30vw;
     height:90vh;
@@ -65,6 +65,11 @@ td {
   }
   #puzzleDetails div.row{
     margin:5px;
+  }
+  #clearMaki{
+    width:50%;
+    height:auto;
+    border-radius:50%
   }
   @keyframes puzzledetailsopen{
     from{
@@ -132,6 +137,16 @@ td {
   }
   #puzzleDetails div.row{
     margin:5px;
+  }
+  #clearMaki{
+    width:auto;
+    height:12vh;
+    position:absolute;
+    top:12vh;
+    left:5vw;
+    border-radius:50%;
+    /* Default value, to be changed via JS */
+    display:hidden;
   }
   @keyframes puzzledetailsopen{
     from{
@@ -217,6 +232,9 @@ td {
 </div>
 <div class="container-fluid" id="puzzleDetails">
   <div class="row align-items-center justify-content-center">
+    <img src="/img/clear_maki.jpg" id="clearMaki">
+  </div>
+  <div class="row align-items-center justify-content-center">
     <h1 id="puzzleName">Puzzle name</h1>
   </div>
   <div class="row align-items-center justify-content-center">
@@ -292,8 +310,12 @@ $(document).ready(function(){
           $("#puzzleName").html(responseObj.shortDescription);
           if(responseObj.solved == true){
             $("#puzzleStatus").html("Complete!");
+            $("#clearMaki").css("display","block");
+            $("#puzzleDetails").css("padding-top","15vh");
           }else{
             $("#puzzleStatus").html("To be completed");
+            $("#clearMaki").css("display","none");
+            $("#puzzleDetails").css("padding-top","30vh");
           }
           $("#puzzleOpenBtn").attr("data-puzzleId",responseObj.id);
         }
