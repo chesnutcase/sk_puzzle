@@ -68,7 +68,7 @@ var puzzleId = {{$puzzle->id}};
           <h3 style="display:inline">Your recent attempts</h3>
         </div>
         <div class="col-auto ml-auto">
-          <h6 style="display:inline">Scroll table for more</h6>
+          <small class="text-muted">Scroll table for more</small>
         </div>
       </div>
       <table class="table table-striped" id="attemptsTable">
@@ -168,7 +168,7 @@ $(document).ready(function(){
                 $("#stageClearText").removeClass("clearAnimation");
                 $("#stageClearText").addClass("clearAnimation");
               }
-              $("#attemptsTable > tr:last-child").get(0).scrollIntoView();
+              $("#attemptsTable").get(0).scrollIntoView();
             }
           }
           testXHR.send(testFD);
