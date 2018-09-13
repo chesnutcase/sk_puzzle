@@ -44,6 +44,9 @@
       color:#EE0000;
       transform: translate(-150px, -50px) rotate(-180deg) scale(3);
     }
+    pre{
+      background-color:lightgray;
+    }
 </style>
 <script>
 var puzzleId = {{$puzzle->id}};
