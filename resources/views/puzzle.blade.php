@@ -17,6 +17,10 @@
       left:0;
       z-index:9001;
     }
+    #attemptsTableDiv{
+      max-height:50vh;
+      overflow-y: scroll;
+    }
 </style>
 <script>
 var puzzleId = {{$puzzle->id}};
@@ -35,9 +39,16 @@ var puzzleId = {{$puzzle->id}};
         <button type="button" class="btn btn-primary" id="runButton">Run</button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" id="attemptsTableDiv">
     <div class="col-md-6">
-      <h3>Your recent attempts</h3>
+      <div class="row">
+        <div class="col-auto">
+          <h3 style="display:inline">Your recent attempts</h3>
+        </div>
+        <div class="col-auto ml-auto">
+          <h6 style="display:inline">Scroll table for more</h6>
+        </div>
+      </div>
       <table class="table table-striped" id="attemptsTable">
         <thead class="thead-light">
           <tr>
@@ -45,7 +56,8 @@ var puzzleId = {{$puzzle->id}};
             <th>Verdict</th>
           </tr>
         </thead>
-        @foreach($puzzle->attempts as $attempt)
+        <tbody>
+        @foreach($puzzle->attempts->reverse() as $attempt)
           @foreach($attempt->results as $result)
             <tr class="{{strpos($result->verdict,'Compilation Error') === 0 ? 'table-warning' : ($result->verdict == 'OK' ? 'table-success' : 'table-danger') }}">
               @if($loop->first == 1)
@@ -55,6 +67,7 @@ var puzzleId = {{$puzzle->id}};
             </tr>
           @endforeach
         @endforeach
+        </tbody>
       </table>
     </div>
   </div>
@@ -69,7 +82,8 @@ $(document).ready(function(){
     }
     var newRow = document.createElement("tr");
     newRow.innerHTML = "<td>" + (Number.parseInt(nextAttemptId) + 1).toString() + "</td>" + "<td>Compiling....</td>";
-    $("#attemptsTable").append(newRow);
+    $("#attemptsTable tbody").prepend(newRow);
+    newRow.scrollIntoView();
     var compileXHR = new XMLHttpRequest();
     var compileFD = new FormData();
     compileXHR.open("POST","/game/api/compile");
@@ -106,6 +120,7 @@ $(document).ready(function(){
                 }
                 $(newRow).after("<tr "+newClass+"><td>" + responseObj2[i].verdict + "</td></tr>");
               }
+              $("#attemptsTable > tr:last-child").get(0).scrollIntoView();
             }
           }
           testXHR.send(testFD);
