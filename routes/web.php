@@ -48,7 +48,8 @@ Route::prefix('game')->middleware('game')->group(function () {
             $attempts = $puzzle->attempts()->orderBy('created_at', 'desc')->get();
             $solved = false;
             foreach ($attempts as $attempt) {
-                if ($attempt->results->pluck('verdict')->unique()->search('OK') !== false) {
+                $uniqueResults = $attempt->results->pluck('verdict')->unique();
+                if ($uniqueResults->count() == 1 && $uniqueResults->first() == 'OK') {
                     $solved = true;
                     break;
                 }
