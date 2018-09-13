@@ -43,7 +43,22 @@ class CreatePuzzlesTable extends Migration
         DB::table('puzzles')->insert([
           'id' => 4,
           'shortDescription' => 'Unique Numbers',
-          'description' => 'Given a list of space separated numbers, return the number of unique numbers.',
+          'description' => 'Given a list of space separated numbers, return the number of unique numbers. <br>
+<h3>Input</h3>
+First passed an integer <var>n</var>, followed by a list of <var>n</var> integers ranging from <var>0</var> to <var>10000</var>.
+<h3>Output</h3>
+A number representing how many unique integers were present in the input list.
+<h3>Examples</h3>
+<h4>Input 1</h4>
+<pre>10
+6 6 3 10 8 7 6 10 4 8</pre>
+<h4>Output 1</h4>
+<pre>6</pre>
+<h4>Input 2</h4>
+<pre>12
+1 4 9 6 3 9 1 7 9 4 1 5</pre>
+<h4>Output 2</h4>
+<pre>7</pre>',
           'timeLimit' => 2,
         ]);
 
