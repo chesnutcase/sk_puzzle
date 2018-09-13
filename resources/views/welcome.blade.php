@@ -1,12 +1,15 @@
 @extends("layouts/app")
 
+@section("head")
+@endsection
+
 @section("content")
 <div class="container-fluid" style="padding-top:5vh">
   <div class="row align-items-center justify-content-center" style="perspective:1000px">
     <img src="/img/main_maki.jpg" style="max-height:35vh;width:auto;border-radius:50%;position:relative" id="maki" data-flipCount="1"/>
   </div>
   <div class="row align-items-center justify-content-center">
-    <h1 class="display-1">Hello SK</h1>
+    <h1 class="display-1" style="font-family:'Lido STF Bold Italic';color:#EE0000">Hello SK</h1>
   </div>
   <div class="row align-items-center justify-content-center">
     <h4>Let us begin the game</h4>
