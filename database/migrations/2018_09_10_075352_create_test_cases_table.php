@@ -424,6 +424,30 @@ EOT
           'output' => 11,
           'puzzle_id' => 8,
         ]);
+
+        DB::table('test_cases')->insert([
+          'input' => 'tea.',
+          'output' => 1,
+          'puzzle_id' => 9,
+        ]);
+
+        DB::table('test_cases')->insert([
+          'input' => 'eeeee',
+          'output' => 1,
+          'puzzle_id' => 9,
+        ]);
+
+        DB::table('test_cases')->insert([
+          'input' => 'lol I really am fucking retarded.',
+          'output' => 0,
+          'puzzle_id' => 9,
+        ]);
+
+        DB::table('test_cases')->insert([
+          'input' => 'Ah, a manual.',
+          'output' => 1,
+          'puzzle_id' => 9,
+        ]);
     }
 
     /**

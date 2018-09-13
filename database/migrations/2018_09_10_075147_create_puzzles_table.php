@@ -395,10 +395,50 @@ EOT
         DB::table('puzzles')->insert([
           'id' => 9,
           'shortDescription' => 'Men of Culture',
-          'description' => "Why, you didn't expect a challenge from me, did you?
-Since I've heard you're well versed in memes, I shall test you on the Men of Culture meme!
-Given a sentence, simply output <out>1</out> if the sentence can be made into a Men of Culture meme, and <out>0</out> otherwise. Have fun!
-          ",
+          'description' => <<<'EOT'
+<img src="https://i.kym-cdn.com/photos/images/newsfeed/001/236/841/075.jpg" style="width:100%">
+<p>Surely you're a man of code, but are you a man of <code>c u l t u r e</code>?<br>
+Since I've heard you're well versed in memes, I shall test you on the Men of Culture meme!</p>
+<p>Given a sentence, simply output <code>1</code> if the sentence can be made into a Men of Culture meme, and <code>0</code> otherwise.
+But what determines whether a sentence is meme-able?
+To refresh your memory, <em>Men of Culture</em>™ memes are made by blanking out some letters of the original string:</p>
+
+<p><code>Ah, I see you're a man of culture as well.</code></p>
+
+<p>To achieve the target meme sentence.
+Now, all you need to determine is whether it's possible to meme!
+You don't even have to come up with <em>how</em> to make the meme (which, btw, I created a question on <a href="https://codegolf.stackexchange.com/questions/162300/generate-men-of-culture">Code Golf Stack Exchange</a> – perhaps it would be useful to you.).</p>
+<h3>Input</h3>
+A singleline string containing the target meme sentence.
+<h3>Output</h3>
+<code>0</code> if the meme cannot be born, <code>1</code> if so.
+<h3>Examples</h3>
+<h4>Input 1</h4>
+<img src="https://i0.kym-cdn.com/photos/images/original/001/235/219/960.jpg" style="width:100%">
+<pre>Ah, I see you're a well.</pre>
+<h4>Ouput 1</h4>
+<pre>1</pre>
+<h4>Input 2</h4>
+<img src="https://i0.kym-cdn.com/photos/images/original/001/236/506/ca8.jpg" style="width:100%">
+<pre>Ah, I see you're Orwell.</pre>
+<h4>Output 2</h4>
+<pre>1</pre>
+<h4>Input 3</h4>
+<pre>Nani the fuck did anata just say about watashi, you chiisai bitch desuka?</pre>
+<h4>Output 3</h4>
+<pre>0</pre>
+<h4>Input 4</h4>
+<img src="https://i.kym-cdn.com/photos/images/newsfeed/001/347/598/591.png" style="width:100%">
+<em>Empty string</em>
+<h4>Output 4</h4>
+<pre>1</pre>
+<h4>Input 5</h5>
+<img src="https://i0.kym-cdn.com/photos/images/original/001/350/031/a17.jpg" style="width:100%">
+<pre>Ah, ymca.</pre>
+<h4>Output 5</h4>
+<pre>1</pre>
+EOT
+          ,
           'timeLimit' => 1,
         ]);
     }
