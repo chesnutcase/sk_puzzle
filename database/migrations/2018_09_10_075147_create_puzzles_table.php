@@ -59,7 +59,23 @@ EOT
         DB::table('puzzles')->insert([
           'id' => 3,
           'shortDescription' => 'Find Prime Numbers',
-          'description' => 'Given any input, determine if the number is prime. Output, to standard output, <out>0</out> if it is non-prime and <out>1</out> if it is prime.',
+          'description' => <<<'EOT'
+Given any input, determine if the number is prime. Output, to standard output, <code>0</code> if it is non-prime and <code>1</code> if it is prime.
+<h3>Input</h3>
+An nunmber <code>x</code> between 0 and 10000.
+<h3>Output</h3>
+<code>0</code> if <code>x</code> is non-prime and <code>1</code> if <code>x</code> is prime.
+<h3>Example</h3>
+<h4>Input 1</h4>
+<pre>1</pre>
+<h4>Output 1</h4>
+<pre>0</pre>
+<h4>Input 2</h4>
+<pre>4643</pre>
+<h4>Output 2</h4>
+<pre>1</pre>
+EOT
+          ,
           'timeLimit' => 2,
         ]);
 
