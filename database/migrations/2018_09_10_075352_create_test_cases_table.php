@@ -83,6 +83,18 @@ EOT
         ]);
 
         DB::table('test_cases')->insert([
+          'input' => '',
+          'output' => 1,
+          'puzzle_id' => 5,
+        ]);
+
+        DB::table('test_cases')->insert([
+          'input' => '',
+          'output' => 0,
+          'puzzle_id' => 6,
+        ]);
+
+        DB::table('test_cases')->insert([
           'input' => <<<'EOT'
 28
 Saa genki na kao de doko e ikou

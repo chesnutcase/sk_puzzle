@@ -116,7 +116,7 @@ EOT
         DB::table('puzzles')->insert([
           'id' => 6,
           'shortDescription' => 'Placeholder 2',
-          'description' => "Placeholder puzzle. Just output '1' to pass.",
+          'description' => "Placeholder puzzle. Just output '0' to pass.",
           'timeLimit' => 1,
         ]);
 
