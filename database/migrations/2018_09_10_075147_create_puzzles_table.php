@@ -332,32 +332,64 @@ EOT
         DB::table('puzzles')->insert([
           'id' => 8,
           'shortDescription' => 'Go Skiing!',
-          'description' => "Sometimes it's nice to take a break and code up a solution to a small, fun problem. Here is one some of our engineers enjoyed recently. It's called Skiing In Singapore.
-
-Well you can’t really ski in Singapore. But let’s say you hopped on a flight to the Niseko ski resort in Japan. Being a software engineer you can’t help but value efficiency, so naturally you want to ski as long as possible and as fast as possible without having to ride back up on the ski lift. So you take a look at the map of the mountain and try to find the longest ski run down.
-
-In digital form the map looks like the number grid below.
-
+          'description' => <<<'EOT'
+<span class="text-muted">This was taken from Redmart's blog <a href="http://geeks.redmart.com/2015/01/07/skiing-in-singapore-a-coding-diversion/">here.</a></span>
+<p>Sometimes it's nice to take a break and code up a solution to a small, fun problem. Here is one some of our engineers enjoyed recently. It's called Skiing In Singapore.</p>
+<p>Well you can’t really ski in Singapore. But let’s say you hopped on a flight to the Niseko ski resort in Japan. Being a software engineer you can’t help but value efficiency, so naturally you want to ski as long as possible and as fast as possible without having to ride back up on the ski lift. So you take a look at the map of the mountain and try to find the longest ski run down.</p>
+<p>In digital form the map looks like the number grid below.</p>
+<pre>
 4 4
 4 8 7 3
 2 5 9 3
 6 3 2 5
 4 4 1 6
-
-The first line (4 4) indicates that this is a 4x4 map. Each number represents the elevation of that area of the mountain. From each area (i.e. box) in the grid you can go north, south, east, west - but only if the elevation of the area you are going into is less than the one you are in. I.e. you can only ski downhill. You can start anywhere on the map and you are looking for a starting point with the longest possible path down as measured by the number of boxes you visit. And if there are several paths down of the same length, you want to take the one with the steepest vertical drop, i.e. the largest difference between your starting elevation and your ending elevation.
-
-On this particular map the longest path down is of length=5 and it’s highlighted in bold below: 9-5-3-2-1.
-
+</pre>
+<p>The first line <code>4 4</code> indicates that this is a 4x4 map. Each number represents the elevation of that area of the mountain. From each area (i.e. box) in the grid you can go north, south, east, west - but only if the elevation of the area you are going into is less than the one you are in. I.e. you can only ski downhill. You can start anywhere on the map and you are looking for a starting point with the longest possible path down as measured by the number of boxes you visit. And if there are several paths down of the same length, you want to take the one with the steepest vertical drop, i.e. the largest difference between your starting elevation and your ending elevation.</p>
+<p>On this particular map the longest path down is of length=5 and it’s highlighted in red below: <code>9-5-3-2-1</code>.</p>
+<pre>
+4 4
+4 8 7 3
+2 <b style="color:red">5</b> <b style="color:red">9</b> 3
+6 <b style="color:red">3</b> <b style="color:red">2</b> 5
+4 4 <b style="color:red">1</b> 6
+</pre>
+<p>There is another path that is also length five: <code>8-5-3-2-1</code>..
+<p>Given a digital map like the ones shown here, output the length of the longest path.</p>
+<h3>Input</h3>
+The first line contains two integers, <code>x</code> and <code>y</code>, that represents the dimensions of the map.
+The next <code>y</code> lines with <code>x</code> columns contain numbers <code>n<sub>i</sub></code> that represents the elevation of that point on the map.
+<h3>Output</h3>
+An integer representing the length of the longest path.
+<h3>Examples</h3>
+<h4>Input 1</h4>
+<pre>
 4 4
 4 8 7 3
 2 5 9 3
 6 3 2 5
 4 4 1 6
-
-There is another path that is also length five: 8-5-3-2-1. However the tie is broken by the first path being steeper, dropping from 9 to 1, a drop of 8, rather than just 8 to 1, a drop of 7.
-
-Your challenge is to write a program in your favorite programming language to find the longest (and then steepest) path on this map specified in the format above. It’s 1000x1000 in size, and all the numbers on it are between 0 and 1500.",
-          'timeLimit' => '30',
+</pre>
+<h4>Output 1</h4>
+<pre>5</pre>
+<h4>Input 2</h4>
+<pre>
+10 10
+18 5 22 81 55 85 84 100 24 56
+57 73 14 34 95 5 48 21 72 4
+73 90 20 93 79 77 18 7 62 93
+71 9 10 42 24 81 80 84 34 66
+87 8 92 25 94 37 23 83 5 34
+68 85 65 99 45 25 44 23 61 97
+53 13 3 20 37 29 84 88 34 10
+82 6 7 71 69 99 48 18 83 11
+19 35 66 16 53 4 66 5 74 15
+35 88 99 43 63 65 69 2 63 58
+</pre>
+<h4>Output 2</h4>
+<pre>7</pre>
+EOT
+          ,
+          'timeLimit' => '5',
         ]);
 
         DB::table('puzzles')->insert([
