@@ -58,6 +58,7 @@ var puzzleId = {{$puzzle->id}};
     <div class="col-md-6">
       <h1 class="display-3" style="font-family:'Lido STF Bold Italic';color:#EE0000">{{$puzzle->shortDescription}}</h1>
       <div>{!!$puzzle->description!!}</div>
+      <div><b>Time Limit:</b> {{$puzzle->timeLimit}}s <b>Test Cases:</b> {{$puzzle->testCases()->count()}}</div>
     </div>
     <div class="col-md-6">
         <?php
