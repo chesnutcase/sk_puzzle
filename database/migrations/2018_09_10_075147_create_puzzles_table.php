@@ -22,7 +22,14 @@ class CreatePuzzlesTable extends Migration
         DB::table('puzzles')->insert([
           'id' => 1,
           'shortDescription' => 'Print Hello World!',
-          'description' => 'Given any input, print <code>Hello World!</code>',
+          'description' => <<<'EOT'
+Given any input, print <code>Hello World!</code>.
+<h3>Input</h3>
+<em>Nothing</em>
+<h3>Output</h3>
+<pre>Hello World!</pre>
+EOT
+          ,
           'timeLimit' => 1,
         ]);
 
