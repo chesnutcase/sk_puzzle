@@ -43,6 +43,11 @@
       color:#EE0000;
       transform: translate(-150px, -50px) rotate(-180deg) scale(3);
     }
+    @media screen and (orientation:portrait){
+      #puzzleTitle{
+        font-size:12vw;
+      }
+    }
     pre{
       background-color:lightgray;
     }
@@ -56,7 +61,7 @@ var puzzleId = {{$puzzle->id}};
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-6">
-      <h1 class="display-3" style="font-family:'Lido STF Bold Italic';color:#EE0000">{{$puzzle->shortDescription}}</h1>
+      <h1 class="display-3" style="font-family:'Lido STF Bold Italic';color:#EE0000" id="puzzleTitle">{{$puzzle->shortDescription}}</h1>
       <div>{!!$puzzle->description!!}</div>
       <div><b>Time Limit:</b> {{$puzzle->timeLimit}}s <b>Test Cases:</b> {{$puzzle->testCases()->count()}}</div>
     </div>
