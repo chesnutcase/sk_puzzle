@@ -124,7 +124,7 @@ EOT
           'id' => 7,
           'shortDescription' => 'Nico Nico Nii',
           'description' => <<<EOT
-<p><img src='https://i.kym-cdn.com/photos/images/newsfeed/001/154/184/151'></p>
+<p><img src='https://i.kym-cdn.com/photos/images/newsfeed/001/154/184/151' style="max-width:100%"></p>
 <p>You nico nico need to add more nico to µ's music!</p>
 <p>Given the lyrics of a µ's song, replace all instances of the syllable <code>'ni'</code> with <code>'NICO NICO NII'</code>.
 However, with each <code>'NICO NICO NII'</code> you add, you must lengthen subsequent nico nico nii's with an additional <code>'I'</code>.</p>
