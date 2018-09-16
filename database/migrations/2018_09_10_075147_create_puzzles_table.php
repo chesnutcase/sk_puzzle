@@ -58,7 +58,7 @@ EOT
 
         DB::table('puzzles')->insert([
           'id' => 3,
-          'shortDescription' => 'Find Prime Numbers',
+          'shortDescription' => 'Prime Numbers',
           'description' => <<<'EOT'
 Given any input, determine if the number is prime. Output, to standard output, <code>0</code> if it is non-prime and <code>1</code> if it is prime.
 <h3>Input</h3>
