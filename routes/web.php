@@ -11,6 +11,7 @@
 |
 */
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManagerStatic as Image;
 
 Route::get('/', function () {
     return view('welcome');
@@ -117,6 +118,11 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         $puzzle = \App\Puzzle::find($request->input('puzzleId'));
         $mapPiece = \App\MapPiece::find($request->input('puzzleId'));
         if ($request->file('image') != null) {
+            //configure to use imagick instead of gd
+            Image::configure(array('driver' => 'imagick'));
+            $img = Image::make($request->file('image')->getRealPath());
+            //fun fact: save() directly writes to the tempfile, then the store() function moves from temp to public/storage!
+            $img->resize(350, 350)->save();
             $mapPiece->imagePath = Storage::url($request->file('image')->store('maps'));
         }
         $puzzle->shortDescription = $request->input('puzzleName');
