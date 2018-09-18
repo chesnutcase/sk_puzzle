@@ -135,8 +135,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
         try {
             foreach ($inputTestCases as $inputTestCase) {
                 $puzzle->testCases()->create([
-              'input' => $inputTestCase->input,
-              'output' => $inputTestCase->output,
+                'input' => trim($inputTestCase->input),
+                'output' => trim($inputTestCase->output),
               ])->save();
             }
         } catch (\Exception $ex) {
