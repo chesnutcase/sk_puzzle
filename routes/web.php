@@ -116,7 +116,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
       ]);
         $puzzle = \App\Puzzle::find($request->input('puzzleId'));
         $mapPiece = \App\MapPiece::find($request->input('puzzleId'));
-        $mapPiece->imagePath = $request->file('image')->store('maps');
+        if ($request->file('image') != null) {
+            $mapPiece->imagePath = Storage::url($request->file('image')->store('maps'));
+        }
         $puzzle->shortDescription = $request->input('puzzleName');
         $puzzle->description = $request->input('puzzleDescription');
         $puzzle->timeLimit = $request->input('puzzleTimeLimit');
@@ -132,6 +134,7 @@ Route::prefix('admin')->middleware('admin')->group(function () {
               ])->save();
             }
         } catch (\Exception $ex) {
+            Log::error('Error occured in test cases: '.$ex->getMessage());
             foreach ($backupTestCases as $backupTestCase) {
                 $backupTestCase->save();
             }
